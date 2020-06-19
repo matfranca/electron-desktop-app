@@ -1,12 +1,39 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-    <link rel="stylesheet" href="index.css">
-  </head>
-  <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
-  </body>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electron Desktop App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="responsive.css">
+</head>
+
+<body>
+  <div class="content">
+    <header>
+      <img src="../public/assets/inpakta_logo.png" alt="Logomarca">
+      <p>Startup de proteção de dados</p>
+    </header>
+    <main>
+      <form action="">
+        <div class="field-group">
+          <div class="field">
+            <input type="text" name="username" required="required" placeholder="Usuário">
+          </div>
+          <div class="field">
+            <input type="password" name="password" required="required" placeholder="Senha">
+          </div>
+          <div class="field">
+            <a href="#"><strong>Criar nova conta</strong></a>
+          </div>
+        </div>
+      </form>
+      <button>Login</button>
+    </main>
+  </div>
+  <script src="/scripts/index.js"></script>
+</body>
+
 </html>

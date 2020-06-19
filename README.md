@@ -5,12 +5,12 @@
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/matfranca/electron-desktop-app">
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/matfranca/electron-desktop-app">
-  
-  <a href="https://github.com/Rocketseat/semana-omnistack-10/commits/master">
+
+  <a href="https://github.com/matfranca/electron-desktop-app/commits/master">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/matfranca/electron-desktop-app">
   </a>
 
-  <a href="https://github.com/Rocketseat/semana-omnistack-10/issues">
+  <a href="https://github.com/matfranca/electron-desktop-app/issues">
     <img alt="Repository issues" src="https://img.shields.io/github/issues/matfranca/electron-desktop-app">
   </a>
 </p>
@@ -31,4 +31,4 @@ This project is being developed using:
 
 ## Project
 
-This is a project to discovery and experiment electron. 
+This is a project to discovery and experiment electron.
