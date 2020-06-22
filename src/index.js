@@ -1,4 +1,5 @@
-const { app, BrowserWindow, Tray } = require('electron');
+const { app, BrowserWindow, Tray, Menu } = require('electron');
+const { resolve } = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -9,11 +10,12 @@ const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 340,
+    resizable: false,
     height: 500,
     maximizable: false,
     frame: false,
     enableLargerThanScreen: false,
-    opacity: 0.95,
+    opacity: 0.90,
     titleBarStyle: "hidden",
     webPreferences: {
       nodeIntegration: true
@@ -25,9 +27,84 @@ const createWindow = () => {
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
+
+  // var menu = Menu.buildFromTemplate([
+  //   {
+  //     label: 'Menu',
+  //     submenu: [
+  //       {
+  //         label: 'Hello',
+  //         click() {
+  //           console.log('World');
+  //         }
+  //       },
+  //       {
+  //         label: 'Hide from everybody',
+  //         click() {
+  //           app.hide(createWindow);
+  //         }
+  //       },
+  //       {
+  //         label: 'Tray On/Off',
+  //         click() {
+  //           tray.hide();
+  //         }
+  //       },
+  //       {
+  //         label: 'Exit',
+  //         click(){
+  //           app.quit;
+  //         }
+  //       }
+  //     ]
+  //   }
+  // ])
+
+  Menu.setApplicationMenu(menu);
 };
 
 app.whenReady().then(createWindow);
+
+// app.dock.hide();
+
+let tray = null;
+
+app.on('ready', () => {
+  tray = new Tray('public/assets/logo_16x16.png');
+  const contextMenu = Menu.buildFromTemplate([
+    {
+      label: 'Opacidade Settings',
+      submenu: [
+        {
+          label: 'Opacidade +',
+        },
+        {
+          label: 'Opacidade -' ,
+        }
+      ]
+    },
+    {
+      label: 'Sair',
+      click (){
+        createWindow.call(createWindow);
+      }
+    }
+  ]);
+  tray.setToolTip('Electron App');
+  tray.setContextMenu(contextMenu);
+
+  // const loginBtn = document.getElementById('loginBtn');
+
+  // loginBtn.addEventListener('click', () => {
+  //   console.log('Button clicked');
+  // });
+
+  // const loginBtn = document.querySelector('loginBtn').addEventListener(
+  //   'click', () => {
+  //     console.log('Button clicked');
+  //   }
+  // );
+});
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -35,17 +112,13 @@ app.whenReady().then(createWindow);
 //app.on('ready', createWindow);
 
 
-app.on('minimize', function(event){
-  event.preventDefault();
-  mainWindow.hide();
-});
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+  // if (process.platform !== 'darwin') {
+  //   app.quit();
+  // }
 });
 
 app.on('activate', () => {
