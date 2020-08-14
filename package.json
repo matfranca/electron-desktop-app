@@ -1,58 +1,52 @@
 {
   "name": "electron-desktop-app",
-  "productName": "electron-desktop-app",
-  "version": "1.0.0",
-  "description": "My Electron application description",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
-  },
+  "version": "0.1.0",
   "keywords": [],
-  "author": {
-    "name": "Matheus Franca",
-    "email": "math.francas@gmail.com"
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "cross-env BROWSER=none react-scripts start",
+    "start-electron": "cross-env ELECTRON_START_URL=http://localhost:3000 electron .",
+    "build": "react-scripts build",
+    "build-electron": "copyfiles --all \"electron/**/*\" \"src/shared/**/*\" build",
+    "start-backup": "react-scripts start",
+    "build-backup": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "license": "MIT",
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "electron_desktop_app"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ]
-    }
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
+    "typescript": "~3.7.2"
   },
   "devDependencies": {
-    "@electron-forge/cli": "6.0.0-beta.51",
-    "@electron-forge/maker-deb": "6.0.0-beta.51",
-    "@electron-forge/maker-rpm": "6.0.0-beta.51",
-    "@electron-forge/maker-squirrel": "6.0.0-beta.51",
-    "@electron-forge/maker-zip": "6.0.0-beta.51",
-    "electron": "9.0.4"
+    "copyfiles": "^2.3.0",
+    "cross-env": "^7.0.2",
+    "electron": "^9.1.0",
+    "electron-builder": "^22.7.0",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5"
   }
 }
